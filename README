@@ -31,7 +31,8 @@ compile seamlessrdp server in linux
 -----------------------------------
 #svn co https://rdesktop.svn.sourceforge.net/svnroot/rdesktop/seamlessrdp/trunck seamlessrdp
 #cd seamlessrdp/ServExe/
-#patch < ../rdesktop-seamless/patch/server.patch
+#patch < ../../rdesktop-seamless/patch/server.patch
+#cp ../../rdesktop-seamless/MinGW/* ./
 #./configure --host=i686-pc-mingw32 (please set your cross compile env)
 #make
 #cp seamlessrdp.la seamlessrdp.dll
