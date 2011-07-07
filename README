@@ -1,0 +1,52 @@
+This directory contains the connections sharing patch for rdesktop seamless
+feature. Copyright of all the source code is belong the author, not me.
+
+dir
+-------------------------------------------------------------------------------
+  patch/: is the patch for the svn-2011-07-4 version
+  prebuilt/: is the prebuilt binary version for 32 bit linux and Windows XP.
+  server-visual-studio/: is the visual studio 08 solution of the seamlessrdp
+                         server.
+  MinGW/: is the missing file for cross compiling seamlessrdp server by MinGW.
+
+build from source:
+-------------------------------------------------------------------------------
+this is update version of building instructions from
+http://www.fontis.com.au/rdesktop
+
+1. Clone this project
+#git clone git@github.com:pengliang/rdesktop-seamless.git
+
+2. Build the rdesktop and seamlessrdp server
+rdesktop
+----------
+#svn co https://rdesktop.svn.sourceforge.net/svnroot/rdesktop/redesktop/trunck rdesktop 
+#cd rdesktop
+#patch < patch/rdesktop.patch
+#./configure 
+#make
+#make insall
+
+compile seamlessrdp server in linux
+-----------------------------------
+#svn co https://rdesktop.svn.sourceforge.net/svnroot/rdesktop/seamlessrdp/trunck seamlessrdp
+#cd seamlessrdp/ServExe/
+#patch < ../rdesktop-seamless/patch/server.patch
+#./configure --host=i686-pc-mingw32 (please set your cross compile env)
+#make
+#cp seamlessrdp.la seamlessrdp.dll
+#copy seamlessrdpshell.exe seamlessrdphook32.exe seamlessrdp.dll to your windows
+   
+compile seamlessrdp server in windows
+-------------------------------------
+#cd rdesktop-seamless/server-visual-studio
+#open the seamless.sln with visual studio 08
+#build the whole solution
+
+install
+-------------------------------------------------------------------------------
+
+
+
+Usage
+-------------------------------------------------------------------------------
